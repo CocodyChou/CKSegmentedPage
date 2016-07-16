@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CKSegmentedPage'
-  s.version          = '0.9.0'
+  s.version          = '0.9.1'
   s.summary          = '有点像网易新闻的分页视图'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  						有点像网易新闻的分页视图，简单，易用，是我的目标。
+有点像网易新闻的分页视图，简单，易用，是我的目标。
                        DESC
 
   s.homepage         = 'https://github.com/CocodyChou/CKSegmentedPage.git'
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'CKSegmentedPage/Classes/**/*'
-  s.requires_arc     = true
+  s.requires_arc = true
   
   # s.resource_bundles = {
   #   'CKSegmentedPage' => ['CKSegmentedPage/Assets/*.png']

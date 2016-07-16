@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  						有点像网易新闻的分页视图
+  						有点像网易新闻的分页视图，简单，易用，是我的目标。
                        DESC
 
   s.homepage         = 'http://git.nsrocker.cn:8080/Cocody/CKSegmentedPage.git'

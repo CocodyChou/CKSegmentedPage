@@ -1,0 +1,19 @@
+PODS:
+  - CKSegmentedPage (0.9.0):
+    - Masonry
+  - Masonry (1.0.1)
+
+DEPENDENCIES:
+  - CKSegmentedPage (from `../`)
+
+EXTERNAL SOURCES:
+  CKSegmentedPage:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CKSegmentedPage: 049cc8d3ef82ef419734f10213de4d0928299cb2
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+
+PODFILE CHECKSUM: e84750a63846f0c6f5520407d0e05d00563c7f1b
+
+COCOAPODS: 1.0.1

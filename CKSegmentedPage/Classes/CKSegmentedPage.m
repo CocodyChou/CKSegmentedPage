@@ -9,7 +9,7 @@
 #import "CKSegmentedPage.h"
 #import "CKContainerCell.h"
 #import "CKTitleContainerCell.h"
-#import <Masonry.h>
+#import "Masonry.h"
 
 @interface CKSegmentedPage () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 

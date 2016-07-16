@@ -1,0 +1,27 @@
+{
+  "name": "CKSegmentedPage",
+  "version": "0.9.0",
+  "summary": "有点像网易新闻的分页视图",
+  "description": "有点像网易新闻的分页视图",
+  "homepage": "http://git.nsrocker.cn:8080/Cocody/CKSegmentedPage.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Cike": "50937036@qq.com"
+  },
+  "source": {
+    "git": "http://git.nsrocker.cn:8080/Cocody/CKSegmentedPage.git",
+    "tag": "0.9.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CKSegmentedPage/Classes/**/*",
+  "dependencies": {
+    "Masonry": [
+
+    ]
+  }
+}

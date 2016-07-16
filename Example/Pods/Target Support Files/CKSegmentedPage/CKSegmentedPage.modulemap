@@ -1,0 +1,6 @@
+framework module CKSegmentedPage {
+  umbrella header "CKSegmentedPage-umbrella.h"
+
+  export *
+  module * { export * }
+}

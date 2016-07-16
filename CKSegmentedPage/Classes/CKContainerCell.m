@@ -7,7 +7,7 @@
 //
 
 #import "CKContainerCell.h"
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 
 @implementation CKContainerCell
 

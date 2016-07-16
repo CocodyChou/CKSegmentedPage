@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CKSegmentedPage'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of CKSegmentedPage.'
+  s.version          = '0.9.0'
+  s.summary          = '有点像网易新闻的分页视图'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  						有点像网易新闻的分页视图
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/CKSegmentedPage'
+  s.homepage         = 'http://git.nsrocker.cn:8080/Cocody/CKSegmentedPage.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Cocody' => '50937036@qq.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/CKSegmentedPage.git', :tag => s.version.to_s }
+  s.author           = { 'Cike' => '50937036@qq.com' }
+  s.source           = { :git => 'http://git.nsrocker.cn:8080/Cocody/CKSegmentedPage.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

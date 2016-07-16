@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CKSegmentedPage_Example' do
+  pod 'CKSegmentedPage', :path => '../'
+
+  target 'CKSegmentedPage_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

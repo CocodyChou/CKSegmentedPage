@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
   						有点像网易新闻的分页视图，简单，易用，是我的目标。
                        DESC
 
-  s.homepage         = 'http://git.nsrocker.cn:8080/Cocody/CKSegmentedPage.git'
+  s.homepage         = 'https://github.com/CocodyChou/CKSegmentedPage.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Cike' => '50937036@qq.com' }
-  s.source           = { :git => 'http://git.nsrocker.cn:8080/Cocody/CKSegmentedPage.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/CocodyChou/CKSegmentedPage.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

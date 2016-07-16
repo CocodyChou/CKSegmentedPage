@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'CKSegmentedPage/Classes/**/*'
+  s.source_files = 'CKSegmentedPage/Classes/*'
   
   # s.resource_bundles = {
   #   'CKSegmentedPage' => ['CKSegmentedPage/Assets/*.png']

@@ -128,8 +128,17 @@
 
 - (NSInteger)titleWidthAtIndex:(NSInteger)index
 {
-    NSString *title = [self titleAtIndex:index];
-    NSInteger width = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : CKSegmentedPageTitleFont} context:nil].size.width + CKSegmentedPageTitleDefaultWidthOffset;
+	NSInteger width;
+	if ([self.pageDataSource respondsToSelector:@selector(segmentedPage:widthForTitleAtIndex:)]) {
+		width = [self.pageDataSource segmentedPage:self widthForTitleAtIndex:index];
+	}
+	else
+	{
+		NSString *title = [self titleAtIndex:index];
+		CGFloat temp = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : CKSegmentedPageTitleFont} context:nil].size.width + CKSegmentedPageTitleDefaultWidthOffset;
+		width = ceil(temp);
+	}
+	NSLog(@"%@", @(width));
     return width;
 }
 
@@ -182,15 +191,8 @@
     
     if ([collectionView isEqual:self.titleCollectionView])
     {
-        CGFloat width;
-        if ([self.pageDataSource respondsToSelector:@selector(segmentedPage:widthForTitleAtIndex:)]) {
-            width = [self.pageDataSource segmentedPage:self widthForTitleAtIndex:indexPath.item];
-        }
-        else
-        {
-            width = [self titleWidthAtIndex:indexPath.item];
-        }
-        toReturn = CGSizeMake(ceil(width), CGRectGetHeight(collectionView.frame));
+		NSInteger width = [self titleWidthAtIndex:indexPath.item];
+		toReturn = CGSizeMake(width, CGRectGetHeight(collectionView.frame));
     }
     else
     {

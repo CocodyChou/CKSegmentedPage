@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		6D87359D8320FCBE8D4A4348 /* Pods_CKSegmentedPage_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6203AAE7CB135DA12BE2938 /* Pods_CKSegmentedPage_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		CC304D1D1D3B3BFB0014A020 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC304D1C1D3B3BFB0014A020 /* Launch.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BD013CC81B5C79DD38D01556 /* Pods-CKSegmentedPage_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CKSegmentedPage_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CKSegmentedPage_Example/Pods-CKSegmentedPage_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C1763FF19287F91F81C100A8 /* Pods_CKSegmentedPage_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKSegmentedPage_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6203AAE7CB135DA12BE2938 /* Pods_CKSegmentedPage_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKSegmentedPage_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC304D1C1D3B3BFB0014A020 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* CKViewController.h */,
 				6003F5A6195388D20070C39A /* CKViewController.m */,
+				CC304D1C1D3B3BFB0014A020 /* Launch.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -279,6 +282,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				CC304D1D1D3B3BFB0014A020 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +520,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CKSegmentedPage/CKSegmentedPage-Prefix.pch";
 				INFOPLIST_FILE = "CKSegmentedPage/CKSegmentedPage-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,6 +537,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CKSegmentedPage/CKSegmentedPage-Prefix.pch";
 				INFOPLIST_FILE = "CKSegmentedPage/CKSegmentedPage-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -30,7 +30,7 @@
 	page.heightOfBottomIndicator = 3;
 	
 	self.titles = @[@"1asd", @"asd2", @"asdfasdf3",
-					@"4", @"5", @"6", @"7asdf", @"8", @"qwe9"
+//					@"4", @"5", @"6", @"7asdf", @"8", @"qwe9"
 					];
 	
 	self.views = [NSMutableArray arrayWithCapacity:self.titles.count];
@@ -87,6 +87,11 @@
 - (UIView *)segmentedPage:(CKSegmentedPage *)page displayViewForPageAtIndex:(NSInteger)index
 {
 	return self.views[index];
+}
+
+- (NSInteger)segmentedPage:(CKSegmentedPage *)page widthForTitleAtIndex:(NSInteger)index
+{
+	return (NSInteger)ceil([UIScreen mainScreen].bounds.size.width / self.titles.count);
 }
 
 - (void)didReceiveMemoryWarning

@@ -24,6 +24,8 @@ pod "CKSegmentedPage"
 
 Cocody, 50937036@qq.com
 
+## Known issues
+
 ## License
 
 CKSegmentedPage is available under the MIT license. See the LICENSE file for more info.

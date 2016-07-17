@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CKSegmentedPage'
-  s.version          = '0.9.1'
+  s.version          = '0.9.2'
   s.summary          = '有点像网易新闻的分页视图'
 
 # This description is used to generate tags and improve search results.

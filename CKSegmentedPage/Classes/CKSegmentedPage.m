@@ -178,6 +178,9 @@
     {
         CKTitleContainerCell *tCell = (CKTitleContainerCell *)cell;
         tCell.title = [self titleAtIndex:indexPath.item];
+		tCell.titleFont = self.titleFont;
+		tCell.titleSelectedTextColor = self.titleSelectedTextColor;
+		tCell.titleTextColor = self.titleTextColor;
     }
     else
     {

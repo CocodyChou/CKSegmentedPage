@@ -12,4 +12,8 @@
 
 @property (nonatomic, strong) NSString *title;
 
+@property (nonatomic, strong) UIFont *titleFont;
+@property (nonatomic, strong) UIColor *titleTextColor;
+@property (nonatomic, strong) UIColor *titleSelectedTextColor;
+
 @end

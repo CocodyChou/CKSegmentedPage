@@ -36,9 +36,9 @@
 {
     if (!_label) {
         UILabel *label = [UILabel new];
-        label.font = [CKSegmentedPage appearance].titleFont;
-		label.textColor = [CKSegmentedPage appearance].titleTextColor;
-		label.highlightedTextColor = [CKSegmentedPage appearance].titleSelectedTextColor;
+        label.font = self.titleFont;
+		label.textColor = self.titleTextColor;
+		label.highlightedTextColor = self.titleSelectedTextColor;
         label.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:label];
         _label = label;
@@ -46,10 +46,22 @@
     return _label;
 }
 
-- (void)setSelected:(BOOL)selected
+-(void)setTitleFont:(UIFont *)titleFont
 {
-    [super setSelected:selected];
-    
+	_titleFont = titleFont;
+	_label.font = titleFont;
+}
+
+- (void)setTitleTextColor:(UIColor *)titleTextColor
+{
+	_titleTextColor = titleTextColor;
+	_label.textColor = titleTextColor;
+}
+
+- (void)setTitleSelectedTextColor:(UIColor *)titleSelectedTextColor
+{
+	_titleSelectedTextColor = titleSelectedTextColor;
+	_label.highlightedTextColor = titleSelectedTextColor;
 }
 
 /*

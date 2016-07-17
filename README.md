@@ -26,6 +26,10 @@ Cocody, 50937036@qq.com
 
 ## Known issues
 
+## TODO
+修改滑动底部选中 title 时不需要动画
+上下两个 view 的背景颜色加入 appearance
+
 ## License
 
 CKSegmentedPage is available under the MIT license. See the LICENSE file for more info.

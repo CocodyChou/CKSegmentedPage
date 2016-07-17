@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+// default configs
 #define CKSegmentedPageTitleFont [UIFont systemFontOfSize:18]
-
 #define CKSegmentedPageTitleDefaultWidthOffset 40
 #define CKSegmentedPageTitleTextColor [UIColor blackColor]
 #define CKSegmentedPageTitleSelectedTextColor [UIColor redColor]

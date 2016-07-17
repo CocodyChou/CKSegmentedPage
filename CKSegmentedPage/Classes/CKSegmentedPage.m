@@ -175,13 +175,13 @@
         cell.displayView = [self.pageDataSource segmentedPage:self displayViewForPageAtIndex:indexPath.item];
     }
     
-    static NSArray *colors = nil;
-    if (!colors) {
-        colors = @[[UIColor whiteColor], [UIColor blueColor], [UIColor cyanColor], [UIColor greenColor], [UIColor purpleColor], [UIColor orangeColor]];
-    }
-    
-    cell.backgroundColor = colors[arc4random() % colors.count];
-    
+//    static NSArray *colors = nil;
+//    if (!colors) {
+//        colors = @[[UIColor whiteColor], [UIColor blueColor], [UIColor cyanColor], [UIColor greenColor], [UIColor purpleColor], [UIColor orangeColor]];
+//    }
+//    
+//    cell.backgroundColor = colors[arc4random() % colors.count];
+	
     return cell;
 }
 

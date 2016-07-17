@@ -59,7 +59,7 @@
 
 @end
 
-@interface CKSegmentedPage : UIView
+@interface CKSegmentedPage : UIView <UIAppearanceContainer, UIAppearance>
 
 @property (nonatomic, strong) UICollectionView *titleCollectionView;
 
@@ -71,8 +71,17 @@
 /*!
  *	0.01 ~ 0.99之间
  */
-@property (nonatomic, assign) CGFloat titleHeightOfTotal;
+@property (nonatomic, assign) CGFloat titleHeightOfTotal UI_APPEARANCE_SELECTOR;
 
-@property (nonatomic, assign) CGFloat heightOfBottomIndicator;
+@property (nonatomic, assign) CGFloat heightOfBottomIndicator UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, strong) UIFont *titleFont UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, assign) NSInteger titleDefaultWidthOffset UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, strong) UIColor *titleTextColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *titleSelectedTextColor UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, strong) UIColor *bottomIndicatorColor UI_APPEARANCE_SELECTOR;
 
 @end

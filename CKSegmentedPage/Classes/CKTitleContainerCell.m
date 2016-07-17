@@ -7,6 +7,7 @@
 //
 
 #import "CKTitleContainerCell.h"
+#import "CKSegmentedPage.h"
 
 @interface CKTitleContainerCell ()
 
@@ -35,7 +36,9 @@
 {
     if (!_label) {
         UILabel *label = [UILabel new];
-        label.font = CKSegmentedPageTitleFont;
+        label.font = [CKSegmentedPage appearance].titleFont;
+		label.textColor = [CKSegmentedPage appearance].titleTextColor;
+		label.highlightedTextColor = [CKSegmentedPage appearance].titleSelectedTextColor;
         label.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:label];
         _label = label;
@@ -47,11 +50,6 @@
 {
     [super setSelected:selected];
     
-    [UIView transitionWithView:self.contentView duration:0.25f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.label.textColor = selected ? CKSegmentedPageTitleSelectedTextColor : CKSegmentedPageTitleTextColor;
-    } completion:^(BOOL finished) {
-        
-    }];
 }
 
 /*

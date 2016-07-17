@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #define CKSegmentedPageTitleFont [UIFont systemFontOfSize:18]
-#define CKSegmentedPageTitleSelectedFont [UIFont systemFontOfSize:18]
 
 #define CKSegmentedPageTitleDefaultWidthOffset 40
 #define CKSegmentedPageTitleTextColor [UIColor blackColor]
 #define CKSegmentedPageTitleSelectedTextColor [UIColor redColor]
+#define CKSegmentedPageBottomIndicatorColor [UIColor redColor]
 
 @interface CKSegmentedPageDefine : NSObject
 

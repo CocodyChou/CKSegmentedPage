@@ -23,8 +23,18 @@
 
 @implementation CKSegmentedPage
 
++ (void)load
+{
+	[CKSegmentedPage appearance].titleFont = CKSegmentedPageTitleFont;
+	[CKSegmentedPage appearance].titleDefaultWidthOffset = CKSegmentedPageTitleDefaultWidthOffset;
+	[CKSegmentedPage appearance].titleTextColor = CKSegmentedPageTitleTextColor;
+	[CKSegmentedPage appearance].titleSelectedTextColor = CKSegmentedPageTitleSelectedTextColor;
+	[CKSegmentedPage appearance].bottomIndicatorColor = CKSegmentedPageBottomIndicatorColor;
+}
+
 - (void)commonInit
 {
+	
     UICollectionViewFlowLayout *l = [UICollectionViewFlowLayout new];
     l.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     l.minimumLineSpacing = 0;
@@ -49,8 +59,8 @@
     self.pageCollectionView.allowsSelection = NO;
     [self addSubview:self.pageCollectionView];
     
-    self.titleCollectionView.backgroundColor = [UIColor redColor];
-    self.pageCollectionView.backgroundColor = [UIColor orangeColor];
+    self.titleCollectionView.backgroundColor = [UIColor whiteColor];
+    self.pageCollectionView.backgroundColor = [UIColor whiteColor];
     
     self.targetItem = -1;
 }
@@ -135,7 +145,7 @@
 	else
 	{
 		NSString *title = [self titleAtIndex:index];
-		CGFloat temp = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : CKSegmentedPageTitleFont} context:nil].size.width + CKSegmentedPageTitleDefaultWidthOffset;
+		CGFloat temp = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width + self.titleDefaultWidthOffset;
 		width = ceil(temp);
 	}
 	NSLog(@"%@", @(width));
@@ -319,7 +329,7 @@ static NSInteger lastNextItem = -1;
 {
     if (!_bottomIndicatorOfTitle) {
         _bottomIndicatorOfTitle = [[UIView alloc] initWithFrame:CGRectZero];
-        _bottomIndicatorOfTitle.backgroundColor = CKSegmentedPageTitleSelectedTextColor;
+        _bottomIndicatorOfTitle.backgroundColor = self.bottomIndicatorColor;
         [self.titleCollectionView addSubview:_bottomIndicatorOfTitle];
     }
     return _bottomIndicatorOfTitle;

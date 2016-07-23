@@ -73,8 +73,15 @@
 /*!
  *	0.01 ~ 0.99之间
  */
-@property (nonatomic, assign) CGFloat titleHeightOfTotal UI_APPEARANCE_SELECTOR DEPRECATED_MSG_ATTRIBUTE("使用 titleHeight ");
+@property (nonatomic, assign) CGFloat titleHeightOfTotal UI_APPEARANCE_SELECTOR;
 
+/*!
+ *	@author Cike
+ *
+ *	@brief 设置之后，titleHeightOfTotal 不再起作用
+ *
+ *	@since 1.0
+ */
 @property (nonatomic, assign) CGFloat titleHeight UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, assign) CGFloat heightOfBottomIndicator UI_APPEARANCE_SELECTOR;

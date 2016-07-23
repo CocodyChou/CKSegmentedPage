@@ -13,7 +13,6 @@
 
 @interface CKSegmentedPage () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, assign) NSInteger currentItem;
 @property (nonatomic, assign) NSInteger lastItem;
 @property (nonatomic, assign) NSInteger targetItem;
 
@@ -88,6 +87,16 @@
     [self setNeedsUpdateConstraints];
 }
 
+- (void)setCurrentItem:(NSInteger)currentItem
+{
+	if (currentItem >= 0 && currentItem < [self numberOfPagesInSegmented]) {
+		_currentItem = currentItem;
+		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:currentItem inSection:0];
+		[self.titleCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+		[self.pageCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+	}
+}
+
 - (CGFloat)titleHeight
 {
     return ceil(self.titleHeightOfTotal * CGRectGetHeight(self.frame));
@@ -120,6 +129,8 @@
         make.right.equalTo(weakSelf.mas_right).with.offset(0);
         make.bottom.equalTo(weakSelf.mas_bottom).with.offset(0);
     }];
+	
+	[self.pageCollectionView reloadData];
 }
 
 #pragma mark - data srouces methoed

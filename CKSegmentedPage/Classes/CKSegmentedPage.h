@@ -68,6 +68,8 @@
 @property (nonatomic, weak) id <CKSegmentedPageDelegate> pageDelegate;
 @property (nonatomic, weak) id <CKSegmentedPageDataSource> pageDataSource;
 
+@property (nonatomic, assign) NSInteger currentItem;
+
 /*!
  *	0.01 ~ 0.99之间
  */

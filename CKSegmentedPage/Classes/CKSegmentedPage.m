@@ -106,7 +106,8 @@
     [super updateConstraints];
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		self.bottomIndicatorOfTitle.frame = CGRectMake(0, [self titleHeight] - self.heightOfBottomIndicator, [self titleWidthAtIndex:self.currentItem], self.heightOfBottomIndicator);
+		CGRect rect = self.bottomIndicatorOfTitle.frame;
+		self.bottomIndicatorOfTitle.frame = CGRectMake(rect.origin.x, [self titleHeight] - self.heightOfBottomIndicator, rect.size.width, self.heightOfBottomIndicator);
 	});
 }
 

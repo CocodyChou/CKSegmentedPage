@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CKSegmentedPage'
-  s.version          = '0.9.6'
+  s.version          = '0.9.7'
   s.summary          = '有点像网易新闻的分页视图'
 
 # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Cike' => '50937036@qq.com' }
-  s.source           = { :git => 'https://github.com/CocodyChou/CKSegmentedPage.git', :tag => '0.9.6' }
+  s.source           = { :git => 'https://github.com/CocodyChou/CKSegmentedPage.git', :tag => '0.9.7' }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

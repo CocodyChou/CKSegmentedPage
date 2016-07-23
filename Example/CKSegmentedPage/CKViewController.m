@@ -26,7 +26,8 @@
 	page.pageDataSource = self;
 	page.pageDelegate = self;
 	
-	page.titleHeightOfTotal = 0.0618;
+//	page.titleHeightOfTotal = 0.0618;
+	page.titleHeight = 44;
 	page.heightOfBottomIndicator = 3;
 	
 	self.titles = @[@"1asd", @"asd2", @"asdfasdf3",

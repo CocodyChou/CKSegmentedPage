@@ -22,6 +22,8 @@
 
 @implementation CKSegmentedPage
 
+@synthesize titleHeight = _titleHeight;
+
 + (void)load
 {
 	[CKSegmentedPage appearance].titleFont = CKSegmentedPageTitleFont;
@@ -97,16 +99,15 @@
 	}
 }
 
-- (CGFloat)titleHeight
-{
-    return ceil(self.titleHeightOfTotal * CGRectGetHeight(self.frame));
-}
-
 - (void)updateConstraints
 {
     [self layoutCollectionViews];
-    
+	
     [super updateConstraints];
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		self.bottomIndicatorOfTitle.frame = CGRectMake(0, [self titleHeight] - self.heightOfBottomIndicator, [self titleWidthAtIndex:self.currentItem], self.heightOfBottomIndicator);
+	});
 }
 
 - (void)layoutCollectionViews
@@ -120,7 +121,7 @@
         make.top.equalTo(weakSelf.mas_top).with.offset(0);
         make.left.equalTo(weakSelf.mas_left).with.offset(0);
         make.right.equalTo(weakSelf.mas_right).with.offset(0);
-        make.height.equalTo(weakSelf.mas_height).with.multipliedBy(weakSelf.titleHeightOfTotal);
+        make.height.mas_equalTo([weakSelf titleHeight]);
     }];
     
     [self.pageCollectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -130,7 +131,9 @@
         make.bottom.equalTo(weakSelf.mas_bottom).with.offset(0);
     }];
 	
-	[self.pageCollectionView reloadData];
+	[self.titleCollectionView.collectionViewLayout invalidateLayout];
+	[self.pageCollectionView.collectionViewLayout invalidateLayout];
+//	[self.pageCollectionView reloadData];
 }
 
 #pragma mark - data srouces methoed
@@ -347,6 +350,21 @@ static NSInteger lastNextItem = -1;
         [self.titleCollectionView addSubview:_bottomIndicatorOfTitle];
     }
     return _bottomIndicatorOfTitle;
+}
+
+- (CGFloat)titleHeight
+{
+	if (_titleHeight > 0) {
+		return _titleHeight;
+	}
+	return ceil(self.titleHeightOfTotal * CGRectGetHeight(self.frame));
+}
+
+#pragma mark - setters
+- (void)setTitleHeight:(CGFloat)titleHeight
+{
+	_titleHeight = titleHeight;
+	[self setNeedsUpdateConstraints];
 }
 
 #pragma mark - inits

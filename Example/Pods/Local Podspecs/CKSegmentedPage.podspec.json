@@ -1,6 +1,6 @@
 {
   "name": "CKSegmentedPage",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "summary": "有点像网易新闻的分页视图",
   "description": "有点像网易新闻的分页视图，简单，易用，是我的目标。",
   "homepage": "https://github.com/CocodyChou/CKSegmentedPage.git",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/CocodyChou/CKSegmentedPage.git",
-    "tag": "0.9.8"
+    "tag": "0.9.9"
   },
   "platforms": {
     "ios": "8.0"

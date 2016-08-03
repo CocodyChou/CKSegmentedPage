@@ -82,6 +82,27 @@
     }
 }
 
+- (void)layoutSubviews
+{
+	[self.titleCollectionView.collectionViewLayout invalidateLayout];
+	[self.pageCollectionView.collectionViewLayout invalidateLayout];
+	[self updateBottomIndicator];
+	[super layoutSubviews];
+}
+
+- (void)updateBottomIndicator
+{
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if ([self numberOfPagesInSegmented] > 0) {
+			[self.titleCollectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+			if ([self.pageDelegate respondsToSelector:@selector(segmentedPage:didShowDisplayViewAtIndex:)]) {
+				[self.pageDelegate segmentedPage:self didShowDisplayViewAtIndex:self.currentItem];
+			}
+			self.bottomIndicatorOfTitle.frame = CGRectMake(0, [self titleHeight] - self.heightOfBottomIndicator, [self titleWidthAtIndex:0], self.heightOfBottomIndicator);
+		}
+	});
+}
+
 - (void)setTitleHeightOfTotal:(CGFloat)titleHeightOfTotal
 {
     NSParameterAssert(titleHeightOfTotal >= 0.01f && titleHeightOfTotal <= 0.99f);
@@ -161,7 +182,7 @@
 	{
 		NSString *title = [self titleAtIndex:index];
 		CGFloat temp = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width + self.titleDefaultWidthOffset;
-		width = ceil(temp);
+		width = (NSInteger)temp;
 	}
 	NSLog(@"%@", @(width));
     return width;
@@ -358,7 +379,7 @@ static NSInteger lastNextItem = -1;
 	if (_titleHeight > 0) {
 		return _titleHeight;
 	}
-	return ceil(self.titleHeightOfTotal * CGRectGetHeight(self.frame));
+	return (NSInteger)(self.titleHeightOfTotal * CGRectGetHeight(self.frame));
 }
 
 #pragma mark - setters

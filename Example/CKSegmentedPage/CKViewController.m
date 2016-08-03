@@ -92,7 +92,7 @@
 
 - (NSInteger)segmentedPage:(CKSegmentedPage *)page widthForTitleAtIndex:(NSInteger)index
 {
-	return (NSInteger)ceil([UIScreen mainScreen].bounds.size.width / self.titles.count);
+	return (NSInteger)([UIScreen mainScreen].bounds.size.width / self.titles.count);
 }
 
 - (void)didReceiveMemoryWarning

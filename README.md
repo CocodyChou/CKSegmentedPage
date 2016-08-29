@@ -1,6 +1,6 @@
 # CKSegmentedPage
 
-[[CI Status](http://img.shields.io/travis/Cocody/CKSegmentedPage.svg?style=flat)](https://travis-ci.org/Cocody/CKSegmentedPage)
+[![CI Status](http://img.shields.io/travis/Cocody/CKSegmentedPage.svg?style=flat)](https://travis-ci.org/Cocody/CKSegmentedPage)
 [![Version](https://img.shields.io/cocoapods/v/CKSegmentedPage.svg?style=flat)](http://cocoapods.org/pods/CKSegmentedPage)
 [![License](https://img.shields.io/cocoapods/l/CKSegmentedPage.svg?style=flat)](http://cocoapods.org/pods/CKSegmentedPage)
 [![Platform](https://img.shields.io/cocoapods/p/CKSegmentedPage.svg?style=flat)](http://cocoapods.org/pods/CKSegmentedPage)

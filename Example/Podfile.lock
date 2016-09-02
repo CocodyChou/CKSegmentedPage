@@ -1,5 +1,5 @@
 PODS:
-  - CKSegmentedPage (0.9.10):
+  - CKSegmentedPage (1.0.0):
     - Masonry
   - Masonry (1.0.1)
 
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CKSegmentedPage: 7a8ebbc94b017d35f2e4f6f8ac364ea4b3d75ef7
+  CKSegmentedPage: 679c3a7766f1f0fb065478b82e46895f621c10b2
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
 
 PODFILE CHECKSUM: e84750a63846f0c6f5520407d0e05d00563c7f1b

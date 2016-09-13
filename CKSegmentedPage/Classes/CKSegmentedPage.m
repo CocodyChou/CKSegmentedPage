@@ -186,7 +186,7 @@
 		CGFloat temp = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width + self.titleDefaultWidthOffset;
 		width = (NSInteger)temp;
 	}
-	NSLog(@"%@", @(width));
+//	NSLog(@"%@", @(width));
 	return width;
 }
 
@@ -226,12 +226,9 @@
 		cell.displayView = [self.pageDataSource segmentedPage:self displayViewForPageAtIndex:indexPath.item];
 	}
 	
-	//    static NSArray *colors = nil;
-	//    if (!colors) {
-	//        colors = @[[UIColor whiteColor], [UIColor blueColor], [UIColor cyanColor], [UIColor greenColor], [UIColor purpleColor], [UIColor orangeColor]];
-	//    }
-	//
-	//    cell.backgroundColor = colors[arc4random() % colors.count];
+	if (NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_8_0) {
+		lastNextItem = indexPath.item;
+	}
 	
 	return cell;
 }
@@ -294,6 +291,9 @@ static NSInteger lastNextItem = -1;
 		
 		NSInteger nextItem;
 		
+		/*!
+		 *  @brief 如果targetItem是－1，说明是滑动，而不是点击 titleCell 导致的切换
+		 */
 		if (self.targetItem == -1) {
 			nextItem = lastNextItem;
 		}
@@ -316,7 +316,7 @@ static NSInteger lastNextItem = -1;
 		NSInteger deltaOffset = scrollView.contentOffset.x - CGRectGetWidth(scrollView.frame) * self.currentItem;
 		CGFloat widthPercent = ABS(deltaOffset / MAX(CGRectGetWidth(scrollView.frame), totalWidth));
 		
-		//        NSLog(@"%@", @(totalWidth));
+		//        NSLog(@"%@", @(nextItem));
 		
 		CGFloat deltaX = nextFrame.origin.x - currentFrame.origin.x;
 		CGFloat deltaWidth = nextWidth - currentWidth;

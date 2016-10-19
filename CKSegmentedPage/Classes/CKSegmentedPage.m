@@ -401,15 +401,6 @@ static NSInteger lastNextItem = -1;
 	return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-	self = [super initWithFrame:frame];
-	if (self) {
-		[self commonInit];
-	}
-	return self;
-}
-
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
 	self = [super initWithCoder:coder];

@@ -319,12 +319,7 @@ static NSInteger lastNextItem = -1;
 			nextItem = self.targetItem;
 		}
 		
-		UICollectionViewCell *currentCell = [self.titleCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentItem inSection:0]];
-		
 		CGFloat currentX = [self titleXAtIndex:self.currentItem];;
-		
-		UICollectionViewCell *nextCell = [self.titleCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:nextItem inSection:0]];
-
 		CGFloat nextX = nextItem < 0 ? 0 : [self titleXAtIndex:nextItem];
 		
 		CGFloat currentWidth = [self indicatorWidthForIndex:self.currentItem];

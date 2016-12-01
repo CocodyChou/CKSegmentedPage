@@ -59,6 +59,11 @@
 
 @end
 
+typedef NS_ENUM(NSUInteger, CKSegmentedPageIndicatorWidthType) {
+	CKSegmentedPageIndicatorWidthTypeFull,
+	CKSegmentedPageIndicatorWidthTypeTextWidth,
+};
+
 @interface CKSegmentedPage : UIView <UIAppearanceContainer, UIAppearance>
 
 @property (nonatomic, strong) UICollectionView *titleCollectionView;
@@ -93,5 +98,7 @@
 @property (nonatomic, assign) NSInteger titleDefaultWidthOffset UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, strong) UIColor *bottomIndicatorColor UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, assign) CKSegmentedPageIndicatorWidthType indicatorWidthType UI_APPEARANCE_SELECTOR;
 
 @end

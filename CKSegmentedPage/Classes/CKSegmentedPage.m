@@ -31,6 +31,7 @@
 	[CKSegmentedPage appearance].titleTextColor = CKSegmentedPageTitleTextColor;
 	[CKSegmentedPage appearance].titleSelectedTextColor = CKSegmentedPageTitleSelectedTextColor;
 	[CKSegmentedPage appearance].bottomIndicatorColor = CKSegmentedPageBottomIndicatorColor;
+	[CKSegmentedPage appearance].indicatorWidthType = CKSegmentedPageIndicatorWidthTypeFull;
 }
 
 - (void)commonInit
@@ -76,7 +77,8 @@
 				if ([self.pageDelegate respondsToSelector:@selector(segmentedPage:didShowDisplayViewAtIndex:)]) {
 					[self.pageDelegate segmentedPage:self didShowDisplayViewAtIndex:self.currentItem];
 				}
-				self.bottomIndicatorOfTitle.frame = CGRectMake(0, [self titleHeight] - self.heightOfBottomIndicator, [self titleWidthAtIndex:0], self.heightOfBottomIndicator);
+				CGFloat x = [self titleXAtIndex:0];
+				self.bottomIndicatorOfTitle.frame = CGRectMake(x, [self titleHeight] - self.heightOfBottomIndicator, [self indicatorWidthForIndex:0], self.heightOfBottomIndicator);
 			}
 		});
 	}
@@ -174,7 +176,22 @@
 	return title;
 }
 
-- (NSInteger)titleWidthAtIndex:(NSInteger)index
+- (CGFloat)titleWidthAtIndex:(NSInteger)index
+{
+	NSString *title = [self titleAtIndex:index];
+	CGFloat temp = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width;
+	return temp;
+}
+
+- (CGFloat)titleXAtIndex:(NSInteger)index
+{
+	UICollectionViewCell *currentCell = [self.titleCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+	CGRect currentFrame = currentCell.frame;
+	CGFloat x = ABS([self indicatorWidthForIndex:index] - [self titleCellWidthAtIndex:index]) / 2 + currentFrame.origin.x;
+	return x;
+}
+
+- (CGFloat)titleCellWidthAtIndex:(NSInteger)index
 {
 	NSInteger width;
 	if ([self.pageDataSource respondsToSelector:@selector(segmentedPage:widthForTitleAtIndex:)]) {
@@ -182,9 +199,8 @@
 	}
 	else
 	{
-		NSString *title = [self titleAtIndex:index];
-		CGFloat temp = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, [self titleHeight]) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width + self.titleDefaultWidthOffset;
-		width = (NSInteger)temp;
+		CGFloat temp = [self titleWidthAtIndex:index] + self.titleDefaultWidthOffset;
+		width = temp;
 	}
 //	NSLog(@"%@", @(width));
 	return width;
@@ -239,7 +255,7 @@
 	
 	if ([collectionView isEqual:self.titleCollectionView])
 	{
-		NSInteger width = [self titleWidthAtIndex:indexPath.item];
+		NSInteger width = [self titleCellWidthAtIndex:indexPath.item];
 		toReturn = CGSizeMake(width, CGRectGetHeight(collectionView.frame));
 	}
 	else
@@ -253,6 +269,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	if ([collectionView isEqual:self.titleCollectionView]) {
+		self.currentItem = self.targetItem;
 		self.targetItem = indexPath.item;
 		[self.titleCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 		[self.pageCollectionView setContentOffset:CGPointMake(indexPath.item * CGRectGetWidth(self.frame), 0) animated:YES];
@@ -305,12 +322,14 @@ static NSInteger lastNextItem = -1;
 		UICollectionViewCell *currentCell = [self.titleCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentItem inSection:0]];
 		
 		CGRect currentFrame = currentCell.frame;
+		CGFloat currentX = [self titleXAtIndex:self.currentItem];;
 		
 		UICollectionViewCell *nextCell = [self.titleCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:nextItem inSection:0]];
 		CGRect nextFrame = nextCell.frame;
+		CGFloat nextX = nextItem < 0 ? 0 : [self titleXAtIndex:nextItem];
 		
-		CGFloat currentWidth = currentFrame.size.width;
-		CGFloat nextWidth = nextFrame.size.width;
+		CGFloat currentWidth = [self indicatorWidthForIndex:self.currentItem];
+		CGFloat nextWidth = nextItem < 0 ? 0 : [self indicatorWidthForIndex:nextItem];
 		
 		CGFloat totalWidth = ABS((self.currentItem - nextItem) * CGRectGetWidth(scrollView.frame));
 		NSInteger deltaOffset = scrollView.contentOffset.x - CGRectGetWidth(scrollView.frame) * self.currentItem;
@@ -318,18 +337,27 @@ static NSInteger lastNextItem = -1;
 		
 		//        NSLog(@"%@", @(nextItem));
 		
-		CGFloat deltaX = nextFrame.origin.x - currentFrame.origin.x;
+		CGFloat deltaX = nextX - currentX;
 		CGFloat deltaWidth = nextWidth - currentWidth;
 		
 		CGFloat height = self.heightOfBottomIndicator;
 		CGFloat width = currentWidth + deltaWidth * widthPercent;
-		CGFloat x = currentFrame.origin.x + deltaX * widthPercent;
+		CGFloat x = currentX + deltaX * widthPercent;
 		
-		//        NSLog(@"%@, %@, %@ , %@, %@", @(x), @(widthPercent), @(deltaOffset), @(currentWidth), @(nextWidth));
+//        NSLog(@"%@, %@, %@ , %@, %@", @(x), @(self.currentItem), @(nextItem), @(currentWidth), @(nextWidth));
+//		NSLog(@"+++ %@, %@", @(self.currentItem), @(nextItem));
 		
 		self.bottomIndicatorOfTitle.frame = CGRectMake(x, [self titleHeight] - height, width, self.heightOfBottomIndicator);
 		
 	}
+}
+
+- (CGFloat)indicatorWidthForIndex:(NSInteger)index
+{
+	if (self.indicatorWidthType == CKSegmentedPageIndicatorWidthTypeTextWidth) {
+		return [self titleWidthAtIndex:index];
+	}
+	return [self titleCellWidthAtIndex:index];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -345,12 +373,20 @@ static NSInteger lastNextItem = -1;
 - (void)scrollViewDidStop:(UIScrollView *)scrollView
 {
 	if ([scrollView isEqual:self.pageCollectionView]) {
+		NSInteger currentItem = scrollView.contentOffset.x / CGRectGetWidth(scrollView.frame);
+		self.currentItem = currentItem;
+//		NSLog(@"--- %@, %@", @(self.currentItem), @(self.targetItem));
+		if (self.targetItem != -1 && self.targetItem != self.currentItem) {
+			return;
+		}
+		if (scrollView.decelerating) {
+			return;
+		}
 		lastNextItem = -1;
 		self.targetItem = -1;
-		NSInteger currentItem = scrollView.contentOffset.x / CGRectGetWidth(scrollView.frame);
+//		NSLog(@"已重置");
 		[self.titleCollectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:currentItem inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 		
-		self.currentItem = currentItem;
 		if ([self.pageDelegate respondsToSelector:@selector(segmentedPage:didShowDisplayViewAtIndex:)]) {
 			[self.pageDelegate segmentedPage:self didShowDisplayViewAtIndex:currentItem];
 		}

@@ -90,10 +90,10 @@
 	return self.views[index];
 }
 
-- (NSInteger)segmentedPage:(CKSegmentedPage *)page widthForTitleAtIndex:(NSInteger)index
-{
-	return (NSInteger)([UIScreen mainScreen].bounds.size.width / self.titles.count);
-}
+//- (NSInteger)segmentedPage:(CKSegmentedPage *)page widthForTitleAtIndex:(NSInteger)index
+//{
+//	return (NSInteger)([UIScreen mainScreen].bounds.size.width / self.titles.count);
+//}
 
 - (void)didReceiveMemoryWarning
 {
